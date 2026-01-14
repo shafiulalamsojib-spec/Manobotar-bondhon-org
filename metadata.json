@@ -1,0 +1,7 @@
+{
+  "name": "Manobotar Bondhon social organisation",
+  "description": "A production-level social organization management system for Manobotar Bondhon, supporting member registrations, donations, and full administrative control with a Bangla-first UI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
