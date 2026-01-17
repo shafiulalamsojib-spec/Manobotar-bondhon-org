@@ -49,15 +49,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         return;
       }
 
-      // 4️⃣ Final user object
+      // 4️⃣ Final user object (IMPORTANT PART)
       const userData: User = {
         id: profile.id,
-        name: profile.full_name,
+        name: profile.name, // ✅ FIXED (Supabase column)
         email: profile.email,
         role: profile.role === 'admin' ? 'Admin' : 'Member',
         approved: profile.approved,
         status: 'Approved',
-        monthly_amount: 0,
+        monthly_amount: profile.monthly_amount || 0,
         joining_date: profile.created_at,
         token: data.session?.access_token || '',
         permissions:
@@ -117,7 +117,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-emerald-600 text-white py-5 rounded-3xl font-black"
+            className="w-full bg-emerald-600 text-white py-5 rounded-3xl font-black disabled:opacity-50"
           >
             {loading ? 'লগইন হচ্ছে...' : 'লগইন করুন'}
           </button>
@@ -133,4 +133,4 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   );
 };
 
-export default Login;    
+export default Login;
